@@ -1,30 +1,34 @@
 var pcar, pv, car1, car2, car3, c1, c2, c3;
 var game = "start";
-var pimg, nimg;
+var pimg, nimg, track, trackp;
 var count = 5;
 
 function preload() {
   pimg = loadImage("sprites/player.png");
   nimg = loadImage("sprites/npc.png");
+  trackp = loadImage("sprites/track.jpg");
 }
 
 function setup() {
   createCanvas(500, 500);
 
 
-  pcar = createSprite(300, 400, 10, 10);
+  track = createSprite(250, -3400, 10, 10);
+  track.addImage(trackp);
+  
+  pcar = createSprite(310, 400, 10, 10);
   pcar.addImage(pimg);
   pcar.scale = 0.3;
-  car1 = createSprite(100, 400, 10, 10);
+  car1 = createSprite(80, 400, 10, 10);
   car1.addImage(nimg);
   car1.scale = 0.3;
-  car2 = createSprite(200, 400, 10, 10);
+  car2 = createSprite(190, 400, 10, 10);
   car2.addImage(nimg);
   car2.scale = 0.3;
-  car3 = createSprite(400, 400, 10, 10);
+  car3 = createSprite(430, 400, 10, 10);
   car3.addImage(nimg);
   car3.scale = 0.3;
-
+  
   pv = random(-17, -20);
   c1 = random(-15, -17);
   c2 = random(-15, -17);
@@ -34,7 +38,7 @@ function setup() {
 }
 
 function draw() {
-  background("lightblue");
+  background("black");
 
   if (frameCount % 20 == 0) {
     count -= 1;
@@ -61,7 +65,7 @@ function draw() {
     car3.velocityY = c3;
   }
 
-  if (pcar.y < -200) {
+  if (pcar.y < -7000) {
     text("YOU WIN!!", 200, 100);
     game = "end";
   }
